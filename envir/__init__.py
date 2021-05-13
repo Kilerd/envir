@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 import os
+
 """Top-level package for envir."""
 
 __author__ = """Kilerd Chan"""
 __email__ = 'blove694@gmail.com'
-__version__ = '0.0.1'
+__version__ = '0.1.0'
 
-__all__ =('EnvirFormatException', 'STR', 'INT', 'FLOAT', 'BOOL', 'load')
+__all__ = ('EnvirFormatException', 'STR', 'INT', 'FLOAT', 'BOOL', 'load')
 
 
 class EnvirFormatException(Exception):
@@ -17,6 +18,16 @@ class EnvirFormatException(Exception):
 
     def __str__(self):
         return 'could not format {} to {} type'.format(self.value, self.format)
+
+
+class EnvirNotNullException(Exception):
+
+    def __init__(self, value, msg):
+        self.value = value
+        self.msg = msg
+
+    def __str__(self):
+        return f'variable {self.value} does not existed: {self.msg}'
 
 
 def STR(value):
@@ -39,7 +50,6 @@ def FLOAT(value):
 
 
 def BOOL(value):
-
     if value.upper() == 'TRUE':
         return True
     elif value.upper() == 'FALSE':
@@ -48,10 +58,12 @@ def BOOL(value):
         raise EnvirFormatException(value, 'BOOL')
 
 
-def load(variable, format=STR, default=None):
-
+def load(variable, formatter=STR, default=None, allow_default=False, error="variable does not exist"):
     env_variable = os.environ.get(variable, None)
     if env_variable:
-        return format(env_variable)
+        return formatter(env_variable)
     else:
-        return default
+        if default is not None or allow_default:
+            return default
+        else:
+            raise EnvirNotNullException(variable, error)

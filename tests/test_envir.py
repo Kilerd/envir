@@ -15,7 +15,7 @@ def test_str():
 
     assert '123' == envir.load('ENVIR_TEST_VARIABLE')
 
-    assert '123' == envir.load('ENVIR_TEST_VARIABLE', format=envir.STR)
+    assert '123' == envir.load('ENVIR_TEST_VARIABLE', formatter=envir.STR)
 
     os.environ.pop('ENVIR_TEST_VARIABLE')
 
@@ -24,7 +24,7 @@ def test_int():
 
     os.environ['ENVIR_TEST_VARIABLE'] = '123'
 
-    assert 123 == envir.load('ENVIR_TEST_VARIABLE', format=envir.INT)
+    assert 123 == envir.load('ENVIR_TEST_VARIABLE', formatter=envir.INT)
 
     os.environ.pop('ENVIR_TEST_VARIABLE')
 
@@ -33,7 +33,7 @@ def test_float():
 
     os.environ['ENVIR_TEST_VARIABLE'] = '123.1'
 
-    assert 123.1 == envir.load('ENVIR_TEST_VARIABLE', format=envir.FLOAT)
+    assert 123.1 == envir.load('ENVIR_TEST_VARIABLE', formatter=envir.FLOAT)
 
     os.environ.pop('ENVIR_TEST_VARIABLE')
 
@@ -42,7 +42,7 @@ def test_bool():
 
     os.environ['ENVIR_TEST_VARIABLE'] = 'true'
 
-    assert True == envir.load('ENVIR_TEST_VARIABLE', format=envir.BOOL)
+    assert True == envir.load('ENVIR_TEST_VARIABLE', formatter=envir.BOOL)
 
     os.environ.pop('ENVIR_TEST_VARIABLE')
 
@@ -50,8 +50,8 @@ def test_bool():
 def test_default():
 
     assert '123' == envir.load('ENVIR_TEST_VARIABLE', default='123')
-    assert '123' == envir.load('ENVIR_TEST_VARIABLE', format=envir.STR, default='123')
-    assert 123 == envir.load('ENVIR_TEST_VARIABLE', format=envir.INT, default=123)
-    assert 123.1 == envir.load('ENVIR_TEST_VARIABLE', format=envir.FLOAT, default=123.1)
-    assert True == envir.load('ENVIR_TEST_VARIABLE', format=envir.BOOL, default=True)
-    assert False == envir.load('ENVIR_TEST_VARIABLE', format=envir.BOOL, default=False)
+    assert '123' == envir.load('ENVIR_TEST_VARIABLE', formatter=envir.STR, default='123')
+    assert 123 == envir.load('ENVIR_TEST_VARIABLE', formatter=envir.INT, default=123)
+    assert 123.1 == envir.load('ENVIR_TEST_VARIABLE', formatter=envir.FLOAT, default=123.1)
+    assert True is envir.load('ENVIR_TEST_VARIABLE', formatter=envir.BOOL, default=True)
+    assert False is envir.load('ENVIR_TEST_VARIABLE', formatter=envir.BOOL, default=False)
