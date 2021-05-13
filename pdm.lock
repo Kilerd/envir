@@ -1,0 +1,52 @@
+[[package]]
+name = "colorama"
+sections = ["dev"]
+version = "0.4.2"
+marker = "sys_platform == 'win32'"
+summary = "Cross-platform colored terminal text."
+
+[[package]]
+name = "py"
+sections = ["dev"]
+version = "1.4.34"
+summary = "library with cross-python path, ini-parsing, io, code, log facilities"
+
+[[package]]
+name = "pytest"
+sections = ["dev"]
+version = "3.2.5"
+summary = "pytest: simple powerful testing with Python"
+dependencies = [
+    "py>=1.4.33",
+    "setuptools",
+    "colorama; sys_platform == \"win32\"",
+]
+
+[[package]]
+name = "setuptools"
+sections = ["dev"]
+version = "30.1.0"
+summary = "Easily download, build, install, upgrade, and uninstall Python packages"
+
+[metadata]
+lock_version = "2"
+content_hash = "sha256:9f39e4b90ba7471d5f727cc8539a3984542f87dc1a95ee7be79b0bd5a826cb72"
+
+[metadata.files]
+"colorama 0.4.2" = [
+    {file = "colorama-0.4.2-py2.py3-none-any.whl", hash = "sha256:1949017b72f8b9c4060f4c12bc35ff47850617e37d2440b574bff362cd8f5174"},
+    {file = "colorama-0.4.2.tar.gz", hash = "sha256:3e0d36a97e86c019317b4896075b38a72438df68abdde0518a6ca12c88448a4b"},
+]
+"py 1.4.34" = [
+    {file = "py-1.4.34-py2.py3-none-any.whl", hash = "sha256:2ccb79b01769d99115aa600d7eed99f524bf752bba8f041dc1c184853514655a"},
+    {file = "py-1.4.34.tar.gz", hash = "sha256:0f2d585d22050e90c7d293b6451c83db097df77871974d90efd5a30dc12fcde3"},
+]
+"pytest 3.2.5" = [
+    {file = "pytest-3.2.5-py2.py3-none-any.whl", hash = "sha256:241d7e7798d79192a123ceaf64c602b4d233eacf6d6e42ae27caa97f498b7dc6"},
+    {file = "pytest-3.2.5.tar.gz", hash = "sha256:6d5bd4f7113b444c55a3bbb5c738a3dd80d43563d063fc42dcb0aaefbdd78b81"},
+]
+"setuptools 30.1.0" = [
+    {file = "setuptools-30.1.0-py2.py3-none-any.whl", hash = "sha256:3861f9b31fb4c6e9bdf6e485adcaf982d12dbd45a9108cea7b08817d6fdea18d"},
+    {file = "setuptools-30.1.0.tar.gz", hash = "sha256:73c7f183260cec2ef870128c77106ba7a978649b8c4cddc320ec3547615e885f"},
+    {file = "setuptools-30.1.0.zip", hash = "sha256:cf8bfab0fe44fa0c2f2b2626cdb938e8023711af053b1c12a2aba319b2f5f8cc"},
+]
